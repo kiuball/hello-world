@@ -14,6 +14,7 @@ count=1
 ######################################################################
 # Logic
 # read each line from inputfile (arg1)
+# expect inputfile name to be <child>-<yyyymmdd>
 # wget to pull each file from tadpoles website
 # rename file to naming convention:
 #   Kiddie_Academy_<child><yyyymmdd><file#>.<jpg|mp4>
@@ -26,13 +27,13 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     case "$TYPE" in
     JPEG)
         echo "TYPE is a jpg"
-        echo "[CMD] mv $$.tmp Kiddie_Academy_Coen-$1_$count.jpg"
-        mv $$.tmp Kiddie_Academy_Coen-$1_$count.jpg
+        echo "[CMD] mv $$.tmp Kiddie_Academy_$1_$count.jpg"
+        mv $$.tmp Kiddie_Academy_$1_$count.jpg
         ;;
     ISO)
         echo "TYPE is a mp4"
-        echo "[CMD] mv $$.tmp Kiddie_Academy_Coen-$1_$count.mp4"
-        mv $$.tmp Kiddie_Academy_Coen-$1_$count.mp4
+        echo "[CMD] mv $$.tmp Kiddie_Academy_$1_$count.mp4"
+        mv $$.tmp Kiddie_Academy_$1_$count.mp4
         ;;
     *)
         echo "[ERROR] file type is not JPEG/ISO"
